@@ -1,0 +1,23 @@
+{
+  "name": "front-sis",
+  "description": "front end",
+  "main": "index.js",
+  "authors": [
+    "hc3 <eliel.floyd@bol.com.br>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/hc3/front-sis",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-material": "^1.1.3",
+    "jquery": "^3.1.1",
+    "angular-animate": "^1.6.2"
+  }
+}
