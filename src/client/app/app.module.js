@@ -3,6 +3,7 @@
 
 	angular
 		.module('app', [
+			'ngMaterialSidemenu',
 			'ngMaterial',
 			'ui.router',
 			'app.people'
