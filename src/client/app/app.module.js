@@ -2,7 +2,9 @@
 	'use strict';
 
 	angular
-		.module('app'. [
-			'app.client'
-			])
+		.module('app', [
+			'ngMaterial',
+			'ui.router',
+			'app.people'
+			]);
 })();

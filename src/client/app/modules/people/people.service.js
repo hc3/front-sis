@@ -3,14 +3,14 @@
 
 	angular
 		.module('app')
-		.service('ClientService',ClientService);
+		.service('PeopleService',PeopleService);
 
-		ClientService.$inject = ['$http'];
+		PeopleService.$inject = ['$http'];
 
-		function ClientService($http) {
+		function PeopleService($http) {
 
 			var service = {
-				new: new,
+				new: newData,
 				listOne: listOne,
 				listAll: listAll,
 				edit: edit,
@@ -19,7 +19,7 @@
 
 			return service;
 
-			function new(data) {
+			function newData(data) {
 				return
 			};
 

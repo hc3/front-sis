@@ -1,0 +1,231 @@
+<style type="text/css">
+  input.ng-valid.ng-touched {
+    background-color:green
+  }
+  input.ng-invalid.ng-touched {
+    background-color:red
+  }
+</style>
+
+<div class="row">
+	
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Nome: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleName"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Tipo: </label>
+			<div class="col-sm-11">
+				<select class="form-control" name="peopleType" required data-ng-model="">
+					<option value="0">Fisica</option>
+					<option value="1">Juridica</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<!-- AO SELECIONAR O TIPO ABRE O FORM DE CPF / CNPJ -->
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Tipo Pessoa: </label>
+			<div class="col-sm-11">
+				<select class="form-control" name="peopleType" required data-ng-model="">
+					<option value="0">Cliente</option>
+					<option value="1">Fornecedor</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- ENDEREÇO DA PESSOA -->
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">CEP: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleEnderecoCep"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Logradouro: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleEnderecoRua"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Bairro: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleEnderecoBairro"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Número: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleEnderecoNumero"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Cidade: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleEnderecoCidade"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Estado: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleEnderecoEstado"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Pais: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleEnderecoPais"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<!-- FIM DO ENDERECO -->
+
+
+
+
+	<!-- CONTATO DA PESSOA -->
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Fone principal: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleContatoFone1"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Fone alternativo: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleContatoFone2"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label">Fone Fixo: </label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleContatoFoneFixo"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleContatoEmail"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleContatoEmailAlt"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12">
+		<div class="form-group">
+			<label for="" class="col-sm-1 control-label"></label>
+			<div class="col-sm-11">
+				<input type="text" class="form-control" id="peopleName" name="peopleContatoSite"
+				data-ng-required
+				data-ng-model=""
+				data-ng-minlength=""
+				data-ng-maxlength="">
+			</div>
+		</div>
+	</div>
+
+</div>
