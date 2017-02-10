@@ -2,8 +2,8 @@
 
         <md-input-container class="md-block" flex-gt-sm flex="55">
           <label>Nome</label>
-          <input md-maxlength="30" required name="nome" data-ng-model="pessoa.nome" />
-          <div ng-messages="peopleForm.nome.$error">
+          <input md-maxlength="30" required name="nome" data-ng-model="vm.people.name" />
+          <div ng-messages="peopleForm.name.$error">
             <div ng-message="required">Nome é obrigatório</div>
           </div>
         </md-input-container>
