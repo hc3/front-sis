@@ -1,15 +1,15 @@
-(function() {
+(function () {
 	'use strict';
 
 	angular
 		.module('app')
-		.controller('PeopleControllerNew',PeopleControllerNew)
+		.controller('PeopleControllerNew', PeopleControllerNew)
 		.controller('PeopleControllerList', PeopleControllerList)
 		.controller('PeopleControllerEdit', PeopleControllerEdit)
 		.controller('PeopleControllerView', PeopleControllerView)
 
 	PeopleControllerNew.$inject = ['PeopleService', '$state', '$stateParams'];
-	PeopleControllerList.$inject = [];
+	PeopleControllerList.$inject = ['PeopleService', '$state', '$stateParams'];
 	PeopleControllerEdit.$inject = [];
 	PeopleControllerView.$inject = [];
 
@@ -25,13 +25,43 @@
 
 	function PeopleControllerList(PeopleService, $state, stateParams) {
 		var vm = this;
+		/* VARIAVEIS BINDING */
 		vm.listPeople = [];
-		vm.listAll();
+		vm.selected = [];
+		vm.reload = false;
+		vm.filter = {
+			form:'',
+			show:'',
+			options:''
+		};
 
-		function listall() {
-			vm.listPeople = PeopleService.listAll()
-			return vm.listPeople;
-		}
+		vm.query = {
+			order: 'name',
+			limit: 5,
+			page: 1
+		};
+
+		vm.listAll = listAll();
+		vm.removeFilter = removeFilter;
+
+		/* FUNÇÕES */
+		listAll();
+		function listAll() {
+			//vm.reload = true; ANTES DO CALLBACK
+			vm.listPeople = PeopleService.listAll();
+			//vm.reload = false; DEPOIS DO CALLBACK
+			//return vm.listPeople;
+		};
+
+		function removeFilter() {
+			vm.filter.show = false;
+			vm.query.filter = '';
+
+			if (vm.filter.form.$dirty) {
+				vm.filter.form.$setPristine();
+			}
+		};
+
 	};
 
 	function PeopleControllerEdit() {

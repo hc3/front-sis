@@ -3,7 +3,7 @@
 
 	angular
 		.module('app')
-		.service('PeopleService',PeopleService);
+		.service('PeopleService', PeopleService);
 
 		PeopleService.$inject = ['$http'];
 
@@ -18,7 +18,7 @@
 			};
 
 			var peoples = [{
-				nome:'TESTE 01',
+				name:'TESTE 01',
 				codeInterno:'001',
 				tipo:'FISICA',
 				endereco:{
@@ -37,7 +37,7 @@
 				}
 			},
 			{
-				nome:'TESTE 02',
+				name:'TESTE 02',
 				codeInterno:'002',
 				tipo:'FISICA',
 				endereco:{
@@ -56,7 +56,7 @@
 				}
 			},
 			{
-				nome:'TESTE 03',
+				name:'TESTE 03',
 				codeInterno:'003',
 				tipo:'FISICA',
 				endereco:{
@@ -75,7 +75,7 @@
 				}
 			},
 			{
-				nome:'TESTE 04',
+				name:'TESTE 04',
 				codeInterno:'004',
 				tipo:'FISICA',
 				endereco:{
