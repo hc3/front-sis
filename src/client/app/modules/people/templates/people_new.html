@@ -1,15 +1,34 @@
+<md-dialog aria-label="Mango (Fruit)" class="_md md-transition-in" role="dialog" tabindex="-1" aria-describedby="dialogContent_22" style="">
+  <form class="ng-pristine ng-valid">
+    <md-toolbar class="_md _md-toolbar-transitions">
+      <div class="md-toolbar-tools">
+        <h2>Cadastro de Pessoa</h2>
+        <span flex="" class="flex"></span>
+        <button class="md-icon-button md-button md-ink-ripple" type="button" ng-transclude="" ng-click="cancel()">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog" class="ng-scope" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet" focusable="false"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></md-icon>
+        </button>
+      </div>
+    </md-toolbar>
 
-<div layout="column" ng-cloak class="md-padding">
-<md-card class="_md">
-	<md-card-title>
-		<md-card-title-text>
-			<span class="md-headline">Cadastro de Pessoa</span>
-		</md-card-title-text>
-	</md-card-title>
-	<md-content layout-padding>
+    <md-dialog-content id="dialogContent_22">
+      <div class="md-dialog-content">
 		<form name="peopleForm" data-ng-submit="">
 			<div data-ng-include="'app/modules/people/templates/people_form.html'">
 		</form>
-	</md-content>
- </md-card>
-</div>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row" class="layout-row">
+      <a class="md-button md-autofocus md-ink-ripple" ng-transclude="" href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus=""><span class="ng-scope">
+        More on Wikipedia
+      </span></a>
+      <span flex="" class="flex"></span>
+      <button class="md-button md-ink-ripple" type="button" ng-transclude="" ng-click="answer('not useful')"><span class="ng-scope">
+       Not Useful
+      </span></button>
+      <button class="md-button md-ink-ripple" type="button" ng-transclude="" ng-click="answer('useful')"><span class="ng-scope">
+        Useful
+      </span></button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
