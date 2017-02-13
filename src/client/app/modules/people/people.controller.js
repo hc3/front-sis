@@ -36,17 +36,16 @@
 			show:'',
 			options:''
 		};
-
 		vm.query = {
 			order: 'name',
 			limit: 5,
 			page: 1
 		};
-
 		vm.listAll = listAll();
 		vm.removeFilter = removeFilter;
 		vm.delete = remove;
 		vm.insert = insert;
+
 
 		/* FUNÇÕES */
 		listAll();
