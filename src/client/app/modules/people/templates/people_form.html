@@ -14,7 +14,7 @@
 
         <md-input-container class="md-block" flex-gt-sm flex="20">
           <label>Código Interno</label>
-          <input md-maxlength="5" required name="codeInterno" data-ng-model="pessoa.codeInterno" />
+          <input md-maxlength="5" required name="codeInterno" data-ng-model="vm.people.codeInterno" />
           <div ng-messages="peopleForm.codeInterno.$error">
             <div ng-message="required">Código interno é obrigatório</div>
           </div>
@@ -26,7 +26,7 @@
 
         <md-input-container class="md-block" flex-gt-sm flex="20">
           <label>Tipo</label>
-            <md-select data-ng-model="pessoa.tipo" placeholder="Fisico/Juridico" class="md-no-underline" required md-no-asterisk="false">
+            <md-select data-ng-model="vm.people.tipo" placeholder="Fisico/Juridico" class="md-no-underline" required md-no-asterisk="false">
               <md-option value="0">Física</md-option>
               <md-option value="1">Juridica</md-option>
             </md-select>
@@ -46,7 +46,7 @@
 
                 <md-input-container class="md-block" flex-gt-sm flex="35">
                   <label>Cep</label>
-                  <input md-maxlength="11" required name="cep" data-ng-model="pessoa.endereco.cep" />
+                  <input md-maxlength="11" required name="cep" data-ng-model="vm.people.endereco.cep" />
                   <div ng-messages="peopleForm.cep.$error">
                     <div ng-message="required">CEP é obrigatório</div>
                   </div>
@@ -58,7 +58,7 @@
 
                 <md-input-container class="md-block" flex-gt-sm flex="45">
                   <label>Rua</label>
-                  <input md-maxlength="30" required name="rua" data-ng-model="pessoa.endereco.rua" />
+                  <input md-maxlength="30" required name="rua" data-ng-model="vm.people.endereco.rua" />
                   <div ng-messages="peopleForm.rua.$error">
                     <div ng-message="required">Rua é obrigatório</div>
                   </div>
@@ -70,7 +70,7 @@
 
                 <md-input-container class="md-block" flex-gt-sm flex="10">
                   <label>Número</label>
-                  <input md-maxlength="5" required name="numero" data-ng-model="pessoa.endereco.numero" />
+                  <input md-maxlength="5" required name="numero" data-ng-model="vm.people.endereco.numero" />
                   <div ng-messages="peopleForm.numero.$error">
                     <div ng-message="required">Número é obrigatório</div>
                   </div>
@@ -82,7 +82,7 @@
 
                 <md-input-container class="md-block" flex-gt-sm flex="35">
                   <label>Bairro</label>
-                  <input md-maxlength="20" required name="bairro" data-ng-model="pessoa.endereco.bairro" />
+                  <input md-maxlength="20" required name="bairro" data-ng-model="vm.people.endereco.bairro" />
                   <div ng-messages="peopleForm.bairro.$error">
                     <div ng-message="required">Bairro é obrigatório</div>
                   </div>
@@ -94,7 +94,7 @@
 
                 <md-input-container class="md-block" flex-gt-sm flex="15">
                   <label>País</label>
-                    <md-select data-ng-model="pessoa.endereco.pais" placeholder="Pais" class="md-no-underline" required md-no-asterisk="false">
+                    <md-select data-ng-model="vm.people.endereco.pais" placeholder="Pais" class="md-no-underline" required md-no-asterisk="false">
                           <md-option value="BRASIL">BRASIL</md-option>
                     </md-select>
                 </md-input-container>
@@ -105,7 +105,7 @@
 
                 <md-input-container class="md-block" flex-gt-sm flex="15">
                   <label>Estado</label>
-                  <md-select data-ng-model="pessoa.endereco.estado" placeholder="Estado" class="md-no-underline" required md-no-asterisk="false">
+                  <md-select data-ng-model="vm.people.endereco.estado" placeholder="Estado" class="md-no-underline" required md-no-asterisk="false">
                           <md-option value="BAHIA">BAHIA</md-option>
                     </md-select>
                 </md-input-container>
@@ -116,7 +116,7 @@
 
                 <md-input-container class="md-block" flex-gt-sm flex="20">
                   <label>Cidade</label>
-                  <md-select data-ng-model="pessoa.endereco.cidade" placeholder="Cidade" class="md-no-underline" required md-no-asterisk="false">
+                  <md-select data-ng-model="vm.people.endereco.cidade" placeholder="Cidade" class="md-no-underline" required md-no-asterisk="false">
                           <md-option value="SENHOR DO BONFIM">SENHOR DO BONFIM</md-option>
                     </md-select>
                 </md-input-container>        
@@ -125,7 +125,7 @@
                 <div layout-gt-sm="row">
                     <md-input-container class="md-block" flex-gt-sm flex="25">
                           <label>Telefone 1</label>
-                          <input md-maxlength="20" required name="telefone1" data-ng-model="pessoa.contato.telefone1" />
+                          <input md-maxlength="20" required name="telefone1" data-ng-model="vm.people.contato.telefone1" />
                           <div ng-messages="peopleForm.telefone1.$error">
                             <div ng-message="required">Telefon1 é obrigatório</div>
                           </div>
@@ -138,7 +138,7 @@
 
                     <md-input-container class="md-block" flex-gt-sm flex="25">
                           <label>Telefone2</label>
-                          <input md-maxlength="20" name="telefone2" data-ng-model="pessoa.contato.telefone2" />
+                          <input md-maxlength="20" name="telefone2" data-ng-model="vm.people.contato.telefone2" />
                     </md-input-container>
 
 
@@ -148,7 +148,7 @@
 
                     <md-input-container class="md-block" flex-gt-sm flex="40">
                           <label>Email</label>
-                          <input md-maxlength="20" required name="email" data-ng-model="pessoa.contato.email" />
+                          <input md-maxlength="20" required name="email" data-ng-model="vm.people.contato.email" />
                           <div ng-messages="peopleForm.email.$error" ng-if="">
                             <div ng-message="required">Email é obrigatório</div>
                           </div>
@@ -156,6 +156,6 @@
                 </div>
 
                 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-                    <md-button class="md-raised md-primary" type="submit" data-ng-disabled="peopleForm.$error">Cadastrar</md-button>
+                    <md-button class="md-raised md-primary" type="submit" data-ng-disabled="vm.peopleForm.$invalid">Cadastrar</md-button>
                     <md-button class="md-raised">Cancelar</md-button>
                 </section>

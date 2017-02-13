@@ -19,10 +19,14 @@
 	function PeopleControllerNew(PeopleService, $state, stateParams) {
 		var vm = this;
 		vm.people = {};
+		vm.teste = "testando";
+		vm.insert = insert;
 
 		function insert() {
-			return PeopleService.newData(vm.people);
-		}
+			console.log('to no insert');
+			console.log(vm.people);
+			//return PeopleService.newData(vm.people);
+		};
 	};
 
 	function PeopleControllerList(PeopleService, $state, stateParams, $mdDialog) {
