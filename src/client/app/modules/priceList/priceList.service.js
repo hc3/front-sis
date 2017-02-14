@@ -20,6 +20,7 @@
 			var priceList = [{
 				id:1,
 				codeInterno:1,
+				descricao:"promoção 001",
 				ano:"2017",
 				versao:"001",
 				produto:{
@@ -34,6 +35,7 @@
 			},{
 				id:2,
 				codeInterno:2,
+				descricao:"promoção 001",
 				ano:"2017",
 				versao:"002",
 				produto:{
@@ -48,6 +50,7 @@
 			},{
 				id:3,
 				codeInterno:3,
+				descricao:"promoção 001",
 				ano:"2017",
 				versao:"001",
 				produto:{

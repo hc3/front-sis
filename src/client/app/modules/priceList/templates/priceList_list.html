@@ -51,7 +51,7 @@
                 aria-invalid="false">
                 <thead md-head="" md-order="query.order" md-on-reorder="getDesserts" class="md-head">
                     <tr md-row="" class="md-row">
-                        <th md-column="" md-order-by="nameToLower" class="md-column md-active md-sort"><span>Código</span>
+                        <th md-column="" md-order-by="nameToLower" class="md-column md-active md-sort"><span>Descrição</span>
                             <md-icon md-svg-icon="arrow-up.svg" class="md-sort-icon md-asc" ng-class="getDirection()" aria-label="arrow-up.svg" role="img">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet">
                                     <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
@@ -63,9 +63,11 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet">
                                     <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
                                 </svg>
-                            </md-icon><span>Descrição</span></th>
-                        <th md-column="" md-numeric="" class="md-column md-numeric">Peso</th>
-                        <th md-column="" class="md-column md-numeric">Embalagem</th>
+                            </md-icon><span>Código</span></th>
+                        <th md-column="" class="md-column md-numeric">Produto</th>
+                        <th md-column="" md-numeric="" class="md-column md-numeric">Ano</th>
+                        <th md-column="" md-numeric="" class="md-column md-numeric">Versão</th>
+                        <th md-column="" md-numeric="" class="md-column md-numeric">Valor</th>
                     </tr>
                 </thead>
                 <thead class="md-table-progress">
@@ -83,7 +85,7 @@
                     </tr>
                 </thead>
                 <tbody md-body="" class="md-body">
-                    <tr md-row="" md-select="product" md-select-id="product" md-auto-select="" ng-repeat="product in vm.listProduct" class="md-row">
+                    <tr md-row="" md-select="priceList" md-select-id="priceList" md-auto-select="" ng-repeat="priceList in vm.listPriceList" class="md-row">
                         <!--
                         <td class="md-cell md-checkbox-cell">
                             <md-checkbox aria-label="Select Row" ng-click="$mdSelect.toggle($event)" ng-checked="$mdSelect.isSelected()" ng-disabled="$mdSelect.disabled"
@@ -95,10 +97,13 @@
                             </md-checkbox>
                         </td>
                         -->
-                        <td md-cell="" class="md-cell">{{product.codeIterno}}</td>
-                        <td md-cell="" class="md-cell">{{product.descricao}}</td>
-                        <td md-cell="" class="md-cell">{{product.peso}}</td>
-                        <td md-cell="" class="md-cell">{{product.embalagem}}</td>
+                        <td md-cell="" class="md-cell">{{priceList.descricao}}</td>
+                        <td md-cell="" class="md-cell">{{priceList.codeInterno}}</td>
+                        
+                        <td md-cell="" class="md-cell">{{priceList.produto.descricao}}</td>
+                        <td md-cell="" class="md-cell">{{priceList.ano}}</td>
+                        <td md-cell="" class="md-cell">{{priceList.versao}}</td>
+                        <td md-cell="" class="md-cell">{{priceList.valor}}</td>
                         
                     </tr>
                 </tbody>

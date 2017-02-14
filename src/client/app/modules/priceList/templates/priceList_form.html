@@ -1,39 +1,81 @@
 <div layout-gt-sm="row">
-  <md-input-container class="md-block" flex-gt-sm>
+  <md-input-container class="md-block" flex-gt-sm flex="70">
     <label>Descrição</label>
-    <input md-maxlength="30" required name="descricao" data-ng-model="vm.product.descricao" />
-    <div ng-messages="productForm.name.$error">
+    <input md-maxlength="30" required name="descricao" data-ng-model="vm.priceList.descricao" />
+    <div ng-messages="priceListForm.name.$error">
       <div ng-message="required">Descricao é obrigatório</div>
     </div>
   </md-input-container>
-</div>
-<div layout-gm-sm="row">
-  <md-input-container class="md-block" flex-gt-sm>
+    <div flex="5" hide-xs hide-sm>
+    <!-- Spacer //-->
+  </div>
+    <md-input-container class="md-block" flex-gt-sm flex="25">
     <label>Código Interno</label>
-    <input md-maxlength="5" name="codeInterno" data-ng-model="vm.product.codeInterno" />
-    <div ng-messages="productForm.codeInterno.$error">
+    <input md-maxlength="5" name="codeInterno" data-ng-model="vm.priceList.codeInterno" />
+    <div ng-messages="priceListForm.codeInterno.$error">
       <div ng-message="required">Código interno é obrigatório</div>
     </div>
   </md-input-container>
+</div>
+
+<div layout-gt-sm="row">
   <md-input-container class="md-block" flex-gt-sm>
-    <label>Embalagem</label>
-    <md-select data-ng-model="vm.product.embalagem" required placeholder="Caixa/Unidade"
+    <label>Produto</label>
+    <md-select data-ng-model="vm.priceList.produto" required placeholder="selecione o produto"
       class="md-no-underline" md-no-asterisk="false">
-      <md-option value="0">Caixa</md-option>
-      <md-option value="1">Und</md-option>
+      <md-option value="0">produto 01</md-option>
+      <md-option value="1">produto 02</md-option>
     </md-select>
   </md-input-container>
-<md-input-container class="md-block" flex-gt-sm>
-    <label>Peso</label>
-    <input md-maxlength="5" name="peso" data-ng-model="vm.product.peso" />
-    <div ng-messages="productForm.peso.$error">
-      <div ng-message="required">Peso é obrigatório</div>
+</div>
+
+<div layout-gt-sm="row">
+  <md-input-container class="md-block" flex-gt-sm flex="20">
+    <label>Ano</label>
+    <input md-maxlength="5" name="ano" data-ng-model="vm.priceList.ano" />
+    <div ng-messages="priceListForm.ano.$error">
+      <div ng-message="required">ano é obrigatório</div>
     </div>
   </md-input-container>
+    <div flex="5" hide-xs hide-sm>
+    <!-- Spacer //-->
+  </div>
+    <md-input-container class="md-block" flex-gt-sm flex="20">
+    <label>Versão</label>
+    <input md-maxlength="5" name="versao" data-ng-model="vm.priceList.versao" />
+    <div ng-messages="priceListForm.versao.$error">
+      <div ng-message="required">versao é obrigatório</div>
+    </div>
+  </md-input-container>
+      <div flex="5" hide-xs hide-sm>
+    <!-- Spacer //-->
+  </div>
+    <md-input-container class="md-block" flex-gt-sm flex="20">
+     <label>Valor</label>
+    <input md-maxlength="5" name="valor" data-ng-model="vm.priceList.valor" />
+    <div ng-messages="priceListForm.valor.$error">
+      <div ng-message="required">valor é obrigatório</div>
+    </div>
+  </md-input-container>
+    <div flex="5" hide-xs hide-sm>
+    <!-- Spacer //-->
+  </div>
+    <md-input-container class="md-block" flex-gt-sm flex="25">
+    <label>Ativa</label>
+    <md-select data-ng-model="vm.priceList.ativa" required placeholder="ativa/inativa"
+      class="md-no-underline" md-no-asterisk="false">
+      <md-option value="0">Ativa</md-option>
+      <md-option value="1">Inativa</md-option>
+    </md-select>
+  </md-input-container>
 </div>
+
+
+
+
   
 
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-  <md-button class="md-raised md-primary" type="submit" data-ng-click="vm.insert()" data-ng-disabled="vm.productForm.$invalid">Cadastrar</md-button>
+  <md-button class="md-raised md-primary" type="submit" data-ng-click="vm.insert()" data-ng-disabled="vm.priceListForm.$invalid">Cadastrar</md-button>
   <md-button class="md-raised" data-ng-click="vm.cancel()">Cancelar</md-button>
 </section>
