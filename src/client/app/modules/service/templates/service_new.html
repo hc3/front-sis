@@ -2,7 +2,6 @@
   <form ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <!-- <h2>Cadastro de pessoa</h2> -->
         <span flex></span>
         <md-button class="md-icon-button" data-ng-click="vm.cancel()">
           X
@@ -15,12 +14,12 @@
         <md-card class="_md">
           <md-card-title>
             <md-card-title-text>
-              <span class="md-headline">Cadastro de Pessoa {{vm.teste}}</span>
+              <span class="md-headline">Cadastro de Produto {{vm.teste}}</span>
             </md-card-title-text>
           </md-card-title>
           <md-content layout-padding>
-            <form name="peopleForm" role="form">
-              <div data-ng-include="'app/modules/people/templates/people_form.html'">
+            <form name="productForm" role="form">
+              <div data-ng-include="'app/modules/product/templates/product_form.html'">
             </form>
           </md-content>
         </md-card>

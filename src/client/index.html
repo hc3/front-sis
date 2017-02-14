@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
     <link rel="stylesheet" href="vendor/angular-material-sidemenu/dest/angular-material-sidemenu.css">
     <link rel="stylesheet" href="vendor/angular-material-data-table/dist/md-data-table.css">
-    <link rel="stylesheet" href="vendor/mdi/css/materialdesignicons.css">
+  <!--  <link rel="stylesheet" href="vendor/mdi/css/materialdesignicons.css"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
     <body data-ng-app="app">
@@ -30,7 +30,9 @@
 
                 <md-sidemenu-content md-icon="home" md-heading="Cadastros" md-arrow="true">
                   <md-sidemenu-button ui-sref="listPeople">Pessoa</md-sidemenu-button>
-                  <md-sidemenu-button href="#">Produto</md-sidemenu-button>
+                  <md-sidemenu-button ui-sref="listProduct">Produto</md-sidemenu-button>
+                  <md-sidemenu-button href="#">Tabela de Preço</md-sidemenu-button>
+                  <md-sidemenu-button href="#">Veiculo</md-sidemenu-button>
                   <md-sidemenu-button href="#">Serviço</md-sidemenu-button>
                   <md-sidemenu-button href="#">Ordem Serviço</md-sidemenu-button>
                 </md-sidemenu-content>
@@ -75,10 +77,18 @@
 
 
         <script src="app/app.module.js"></script>
+        <!-- PEOPLE -->
         <script src="app/modules/people/people.module.js"></script>
         <script src="app/modules/people/people.controller.js"></script>
         <script src="app/modules/people/people.router.js"></script>
         <script src="app/modules/people/people.service.js"></script>
+  
+        <!-- PRODUCT -->
+        <script src="app/modules/product/product.module.js"></script>
+        <script src="app/modules/product/product.controller.js"></script>
+        <script src="app/modules/product/product.router.js"></script>
+        <script src="app/modules/product/product.service.js"></script>
+
     </body>
 
 </html>

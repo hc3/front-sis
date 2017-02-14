@@ -1,0 +1,39 @@
+<div layout-gt-sm="row">
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>Descrição</label>
+    <input md-maxlength="30" required name="descricao" data-ng-model="vm.product.descricao" />
+    <div ng-messages="productForm.name.$error">
+      <div ng-message="required">Descricao é obrigatório</div>
+    </div>
+  </md-input-container>
+</div>
+<div layout-gm-sm="row">
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>Código Interno</label>
+    <input md-maxlength="5" name="codeInterno" data-ng-model="vm.product.codeInterno" />
+    <div ng-messages="productForm.codeInterno.$error">
+      <div ng-message="required">Código interno é obrigatório</div>
+    </div>
+  </md-input-container>
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>Embalagem</label>
+    <md-select data-ng-model="vm.product.embalagem" required placeholder="Caixa/Unidade"
+      class="md-no-underline" md-no-asterisk="false">
+      <md-option value="0">Caixa</md-option>
+      <md-option value="1">Und</md-option>
+    </md-select>
+  </md-input-container>
+<md-input-container class="md-block" flex-gt-sm>
+    <label>Peso</label>
+    <input md-maxlength="5" name="peso" data-ng-model="vm.product.peso" />
+    <div ng-messages="productForm.peso.$error">
+      <div ng-message="required">Peso é obrigatório</div>
+    </div>
+  </md-input-container>
+</div>
+  
+
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+  <md-button class="md-raised md-primary" type="submit" data-ng-click="vm.insert()" data-ng-disabled="vm.productForm.$invalid">Cadastrar</md-button>
+  <md-button class="md-raised" data-ng-click="vm.cancel()">Cancelar</md-button>
+</section>
