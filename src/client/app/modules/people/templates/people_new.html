@@ -4,46 +4,30 @@
       <div class="md-toolbar-tools">
         <!-- <h2>Cadastro de pessoa</h2> -->
         <span flex></span>
-        <md-button class="md-icon-button" ng-click="cancel()">
-         <!-- <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon> -->
+        <md-button class="md-icon-button" data-ng-click="vm.cancel()">
+          X
+          <!-- <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon> -->
         </md-button>
       </div>
     </md-toolbar>
-
     <md-dialog-content>
-      
-	<div layout="column" ng-cloak class="md-padding">
-<md-card class="_md">
-	<md-card-title>
-		<md-card-title-text>
-			<span class="md-headline">Cadastro de Pessoa {{vm.teste}}</span>
-		</md-card-title-text>
-	</md-card-title>
-	<md-content layout-padding>
-		<form name="peopleForm" data-ng-submit="vm.insert()" role="form">
-			<div data-ng-include="'app/modules/people/templates/people_form.html'">
-		</form>
-	</md-content>
- </md-card>
-</div> 
-     
+      <div layout="column" data-ng-cloak class="md-padding">
+        <md-card class="_md">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Cadastro de Pessoa {{vm.teste}}</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-content layout-padding>
+            <form name="peopleForm" role="form">
+              <div data-ng-include="'app/modules/people/templates/people_form.html'">
+            </form>
+          </md-content>
+        </md-card>
+        </div>
     </md-dialog-content>
-
   </form>
 </md-dialog>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!--
 <md-dialog aria-label="Mango (Fruit)" class="_md md-transition-in" role="dialog" tabindex="-1" aria-describedby="dialogContent_22" style="">
   <form class="ng-pristine ng-valid">
