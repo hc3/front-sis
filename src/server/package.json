@@ -4,7 +4,7 @@
   "description": "Fábricas de geração das partes do Atomic Design",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon ./bin/www",
     "test": "mocha ./tdd.js"
   },
   "repository": {
