@@ -3,37 +3,37 @@
 
 	angular
 		.module('app')
-		.controller('ProductControllerNew', ProductControllerNew)
-		.controller('ProductControllerList', ProductControllerList)
-		.controller('ProductControllerEdit', ProductControllerEdit)
-		.controller('ProductControllerView', ProductControllerView)
-		.controller('ProductControllerRemove', ProductControllerRemove)
+		.controller('ServiceControllerNew', ServiceControllerNew)
+		.controller('ServiceControllerList', ServiceControllerList)
+		.controller('ServiceControllerEdit', ServiceControllerEdit)
+		.controller('ServiceControllerView', ServiceControllerView)
+		.controller('ServiceControllerRemove', ServiceControllerRemove)
 
-	ProductControllerNew.$inject = ['ProductService', '$state', '$stateParams', '$mdDialog'];
-	ProductControllerList.$inject = ['ProductService', '$state', '$stateParams', '$mdDialog'];
-	ProductControllerEdit.$inject = ['$mdDialog', 'productSelected'];
-	ProductControllerView.$inject = [];
-	ProductControllerRemove.$inject = ['$mdDialog', 'productSelected'];
+	ServiceControllerNew.$inject = ['ServiceService', '$state', '$stateParams', '$mdDialog'];
+	ServiceControllerList.$inject = ['ServiceService', '$state', '$stateParams', '$mdDialog'];
+	ServiceControllerEdit.$inject = ['$mdDialog', 'serviceSelected'];
+	ServiceControllerView.$inject = [];
+	ServiceControllerRemove.$inject = ['$mdDialog', 'serviceSelected'];
 
 
-	function ProductControllerNew(ProductService, $state, stateParams, $mdDialog) {
+	function ServiceControllerNew(ServiceService, $state, stateParams, $mdDialog) {
 		var vm = this;
-		vm.product = {};
+		vm.service = {};
 		vm.teste = "testando";
 		vm.insert = insert;
 		vm.cancel = $mdDialog.cancel;
 
 		function insert() {
 			console.log('to no insert');
-			console.log(vm.product);
-			//return ProductService.newData(vm.product);
+			console.log(vm.service);
+			//return ServiceService.newData(vm.service);
 		};
 	};
 
-	function ProductControllerList(ProductService, $state, stateParams, $mdDialog) {
+	function ServiceControllerList(ServiceService, $state, stateParams, $mdDialog) {
 		var vm = this;
 		/* VARIAVEIS BINDING */
-		vm.listProduct = [];
+		vm.listService = [];
 		vm.selected = [];
 		vm.reload = false;
 		vm.filter = {
@@ -59,9 +59,9 @@
 
 		function listAll() {
 			//vm.reload = true; ANTES DO CALLBACK
-			vm.listProduct = ProductService.listAll();
+			vm.listService = ServiceService.listAll();
 			//vm.reload = false; DEPOIS DO CALLBACK
-			//return vm.listProduct;
+			//return vm.listService;
 		};
 
 		function removeFilter() {
@@ -76,70 +76,70 @@
 		function remove(event) {
 			$mdDialog.show({
 				clickOutsideToClose: true,
-				controller: 'ProductControllerRemove',
+				controller: 'ServiceControllerRemove',
 				controllerAs: 'vm',
 				focusOnOpen: false,
 				targetEvent: event,
 				locals: {
-					productSelected: vm.selected
+					serviceSelected: vm.selected
 				},
-				templateUrl: 'app/modules/product/templates/delete-dialog.html',
+				templateUrl: 'app/modules/service/templates/delete-dialog.html',
 			}).then(vm.listAll);
 		};
 
 		function insert(event) {
 			$mdDialog.show({
 				clickOutsideToClose: true,
-				controller: 'ProductControllerNew',
+				controller: 'ServiceControllerNew',
 				controllerAs: 'vm',
 				focusOnOpen: false,
 				targetEvent: event,
-				templateUrl: 'app/modules/product/templates/product_new.html',
+				templateUrl: 'app/modules/service/templates/service_new.html',
 			}).then(vm.listAll);
 		};
 
 		function edit(event) {
 			$mdDialog.show({
 				clickOutsideToClose: true,
-				controller: 'ProductControllerEdit',
+				controller: 'ServiceControllerEdit',
 				controllerAs: 'vm',
 				focusOnOpen: false,
 				targetEvent: event,
 				locals: {
-					productSelected: vm.selected
+					serviceSelected: vm.selected
 				},
-				templateUrl: 'app/modules/product/templates/product_new.html',
+				templateUrl: 'app/modules/service/templates/service_new.html',
 			}).then(vm.listAll);
 		};
 
 	};
 
-	function ProductControllerEdit($mdDialog, productSelected) {
+	function ServiceControllerEdit($mdDialog, serviceSelected) {
 		var vm = this;
 		vm.cancel = $mdDialog.cancel;
 		vm.insert = insert;
-		vm.product = productSelected[0];
+		vm.service = serviceSelected[0];
 
 		function insert() {
-			console.log('product selected',productSelected);
-			console.log('product',vm.product);
+			console.log('service selected',serviceSelected);
+			console.log('service',vm.service);
 		};
 	};
 
-	function ProductControllerView() {
+	function ServiceControllerView() {
 		return
 	};
 
-	function ProductControllerRemove($mdDialog, productSelected) {
+	function ServiceControllerRemove($mdDialog, serviceSelected) {
 		var vm = this;
 		vm.cancel = $mdDialog.cancel;
 
 		vm.remove = remove;
 
 		function remove() {
-			console.log('removendo produto', productSelected[0]);
+			console.log('removendo produto', serviceSelected[0]);
 		}
-		//console.log('MDDIALOG',product);
+		//console.log('MDDIALOG',service);
 	};
 
 

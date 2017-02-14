@@ -3,5 +3,6 @@ dist/
 npm-debug.log
 node_modules/**/*
 src/client/vendor/**/*
+src/server/node_modules/**/*
 .idea/**
 .vscode/**

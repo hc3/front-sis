@@ -2,7 +2,7 @@
     <md-card>
         <md-toolbar class="md-table-toolbar md-default" ng-hide="vm.selected.length || vm.filter.show" aria-hidden="false" style="">
             <div class="md-toolbar-tools">
-                <h2 class="md-title">Lista de produtos cadastradas</h2>
+                <h2 class="md-title">Lista de serviços cadastradas</h2>
                 <div flex="" class="flex"></div>
                 <button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="vm.listAll()" aria-label="filter_list">
                     <md-icon class="material-icons">cached</md-icon>
@@ -23,7 +23,7 @@
             <div class="md-toolbar-tools">
                 <md-icon class="material-icons">search</md-icon>
                 <form flex="" name="vm.filter.form" class="ng-pristine ng-valid flex">
-                    <input ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="  Busca de produtos" class="ng-pristine ng-untouched ng-valid"
+                    <input ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="  Busca de serviços" class="ng-pristine ng-untouched ng-valid"
                         aria-invalid="false" type="text">
                 </form>
                 <button class="md-icon-button md-button md-ink-ripple" type="button" ng-click="vm.removeFilter()" aria-label="close">
@@ -51,7 +51,7 @@
                 aria-invalid="false">
                 <thead md-head="" md-order="query.order" md-on-reorder="getDesserts" class="md-head">
                     <tr md-row="" class="md-row">
-                        <th md-column="" md-order-by="nameToLower" class="md-column md-active md-sort"><span>Código</span>
+                        <th md-column="" md-order-by="nameToLower" class="md-column md-active md-sort"><span>Descrição</span>
                             <md-icon md-svg-icon="arrow-up.svg" class="md-sort-icon md-asc" ng-class="getDirection()" aria-label="arrow-up.svg" role="img">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet">
                                     <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
@@ -63,9 +63,8 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fit="" preserveAspectRatio="xMidYMid meet">
                                     <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"></path>
                                 </svg>
-                            </md-icon><span>Descrição</span></th>
-                        <th md-column="" md-numeric="" class="md-column md-numeric">Peso</th>
-                        <th md-column="" class="md-column md-numeric">Embalagem</th>
+                            </md-icon><span>Código</span></th>
+                        <th md-column="" md-numeric="" class="md-column md-numeric">valor</th>
                     </tr>
                 </thead>
                 <thead class="md-table-progress">
@@ -83,7 +82,7 @@
                     </tr>
                 </thead>
                 <tbody md-body="" class="md-body">
-                    <tr md-row="" md-select="product" md-select-id="product" md-auto-select="" ng-repeat="product in vm.listProduct" class="md-row">
+                    <tr md-row="" md-select="service" md-select-id="service" md-auto-select="" ng-repeat="service in vm.listService" class="md-row">
                         <!--
                         <td class="md-cell md-checkbox-cell">
                             <md-checkbox aria-label="Select Row" ng-click="$mdSelect.toggle($event)" ng-checked="$mdSelect.isSelected()" ng-disabled="$mdSelect.disabled"
@@ -95,10 +94,10 @@
                             </md-checkbox>
                         </td>
                         -->
-                        <td md-cell="" class="md-cell">{{product.codeIterno}}</td>
-                        <td md-cell="" class="md-cell">{{product.descricao}}</td>
-                        <td md-cell="" class="md-cell">{{product.peso}}</td>
-                        <td md-cell="" class="md-cell">{{product.embalagem}}</td>
+                        
+                        <td md-cell="" class="md-cell">{{service.descricao}}</td>
+                        <td md-cell="" class="md-cell">{{service.codeInterno}}</td>
+                        <td md-cell="" class="md-cell">{{service.valor}}</td>
                         
                     </tr>
                 </tbody>

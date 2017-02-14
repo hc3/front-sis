@@ -3,11 +3,11 @@
 
 	angular
 		.module('app')
-		.service('ProductService', ProductService);
+		.service('ServiceService', ServiceService);
 
-		ProductService.$inject = ['$http'];
+		ServiceService.$inject = ['$http'];
 
-		function ProductService($http) {
+		function ServiceService($http) {
 
 			var service = {
 				new: newData,
@@ -17,48 +17,35 @@
 				remove: remove
 			};
 
-			var products = [{
+			var services = [{
 				id:1,
-				codeIterno:1,
-				descricao:"PRODUTO 001",
-				peso:250,
-				embalagem:"und"
-			},{
+				codeInterno:1,
+				descricao:"Troca de bateria",
+				valor:250.00
+			},
+			{
 				id:2,
-				codeIterno:2,
-				descricao:"PRODUTO 002",
-				peso:50,
-				embalagem:"caixa"
-			},{
+				codeInterno:2,
+				descricao:"Troca de lanterna",
+				valor:150.00
+			},
+			{
 				id:3,
-				codeIterno:3,
-				descricao:"PRODUTO 003",
-				peso:20,
-				embalagem:"und"
-			},{
+				codeInterno:3,
+				descricao:"Troca de luminaria",
+				valor:50.00
+			},
+			{
 				id:4,
-				codeIterno:4,
-				descricao:"PRODUTO 004",
-				peso:28,
-				embalagem:"caixa"
-			},{
-				id:5,
-				codeIterno:5,
-				descricao:"PRODUTO 005",
-				peso:2,
-				embalagem:"und"
-			},{
-				id:6,
-				codeIterno:6,
-				descricao:"PRODUTO 006",
-				peso:80,
-				embalagem:"und"
-			},]; 
+				codeInterno:4,
+				descricao:"Troca de memoria ram",
+				valor:80.00
+			}];
 
 			return service;
 
 			function newData(data) {
-				return products.push(data);
+				return services.push(data);
 			};
 
 			function listOne(id) {
@@ -66,7 +53,7 @@
 			};
 
 			function listAll() {
-				return products;
+				return services;
 			};
 
 			function edit(data) {
