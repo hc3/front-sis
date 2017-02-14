@@ -10,7 +10,7 @@ module.exports = [
   { path: '/populate',
     method: 'get', action: 'findAllPopulate' },
   { path: '/:id',
-    method: 'get', action: 'findById' },
+    method: 'get', action: 'findByIdentifier' },
   { path: '/:id/populate',
     method: 'get', action: 'findByIdPopulate' },
   { path: '/:id',
