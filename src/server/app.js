@@ -34,7 +34,7 @@ app.get('/ping', (req, res, next) => res.send('pong') )
 
 
 module.exports = app;
-
+/*
 app.listen(port, () => {
   console.log('---------------------------------------------------------------------------')
   console.log('Express server listening on port ' + port)
@@ -43,4 +43,4 @@ app.listen(port, () => {
     '\nprocess.cwd = ' + process.cwd())
   console.log('---------------------------------------------------------------------------')
 })
-
+*/
