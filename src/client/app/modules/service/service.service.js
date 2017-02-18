@@ -45,23 +45,23 @@
 			return service;
 
 			function newData(data) {
-				return services.push(data);
+				return $http.post('/api/services',data);
 			};
 
 			function listOne(id) {
-				return
+				return $http.get('/api/services',{params:id});
 			};
 
 			function listAll() {
-				return services;
+				return $http.get('/api/services');
 			};
 
 			function edit(data) {
-				return
+				return $http.put('/api/services',{params:id});
 			};
 
 			function remove(data) {
-				return
+				return $http.delete('/api/services/'+data,{params:data});
 			};
 		}
 })();

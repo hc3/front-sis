@@ -97,23 +97,25 @@
 			return service;
 
 			function newData(data) {
-				return peoples.push(data);
+				return $http.post('/api/peoples',data);
+				//return peoples.push(data);
 			};
 
 			function listOne(id) {
-				return
+				return $http.get('/api/peoples',{params:id});
 			};
 
 			function listAll() {
-				return peoples;
+				return $http.get('/api/peoples');
+				//return peoples;
 			};
 
 			function edit(data) {
-				return
+				return $http.put('/api/peoples',{params:id});
 			};
 
 			function remove(data) {
-				return
+				return $http.delete('/api/peoples',{params:id});
 			};
 		}
 })();

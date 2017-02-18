@@ -13,7 +13,15 @@
 	ServiceControllerList.$inject = ['ServiceService', '$state', '$stateParams', '$mdDialog'];
 	ServiceControllerEdit.$inject = ['$mdDialog', 'serviceSelected'];
 	ServiceControllerView.$inject = [];
-	ServiceControllerRemove.$inject = ['$mdDialog', 'serviceSelected'];
+	ServiceControllerRemove.$inject = ['$mdDialog', 'serviceSelected','ServiceService', '$state'];
+
+	function cleanForm(form) {
+        if(form) {
+            service = {};
+            form.$setPristine();
+            form.$setUntouched();
+        }
+	};
 
 
 	function ServiceControllerNew(ServiceService, $state, stateParams, $mdDialog) {
@@ -24,9 +32,16 @@
 		vm.cancel = $mdDialog.cancel;
 
 		function insert() {
-			console.log('to no insert');
-			console.log(vm.service);
-			//return ServiceService.newData(vm.service);
+			//console.log('to no insert');
+			//console.log(vm.service);
+			return ServiceService.new(vm.service)
+				.then(function(data) {
+					vm.cancel();
+					cleanForm(vm.serviceForm);
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		};
 	};
 
@@ -52,16 +67,22 @@
 		vm.delete = remove;
 		vm.insert = insert;
 		vm.edit = edit;
-
+		/* -------------------- */
 
 		/* FUNÇÕES */
 		listAll();
 
 		function listAll() {
-			//vm.reload = true; ANTES DO CALLBACK
-			vm.listService = ServiceService.listAll();
-			//vm.reload = false; DEPOIS DO CALLBACK
-			//return vm.listService;
+			vm.reload = true
+			return ServiceService.listAll()
+				.then(function(data) {
+					vm.listService = data.data;
+					vm.reload = false;
+					return vm.listservice;
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		};
 
 		function removeFilter() {
@@ -130,14 +151,21 @@
 		return
 	};
 
-	function ServiceControllerRemove($mdDialog, serviceSelected) {
+	function ServiceControllerRemove($mdDialog, serviceSelected, ServiceService, $state) {
 		var vm = this;
 		vm.cancel = $mdDialog.cancel;
 
 		vm.remove = remove;
 
 		function remove() {
-			console.log('removendo produto', serviceSelected[0]);
+			return ServiceService.remove(serviceSelected[0]._id)
+				.then(function(data) {
+					$state.go('listService');
+				})
+				.catch(function(error) {
+					console.log(error);
+				})
+			//console.log('removendo produto', serviceSelected[0]);
 		}
 		//console.log('MDDIALOG',service);
 	};
