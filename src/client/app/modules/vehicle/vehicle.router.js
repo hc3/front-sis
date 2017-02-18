@@ -13,7 +13,7 @@
 
 				.state('listProduct', {
 					url:'/product',
-					templateUrl:'app/modules/product/templates/product_list',
+					templateUrl:'app/modules/product/templates/product_list.html',
 					controller:'ProductControllerList',
 					controllerAs:'vm'
 				})

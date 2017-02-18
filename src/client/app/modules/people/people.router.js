@@ -13,7 +13,7 @@
 
 				.state('listPeople', {
 					url:'/people',
-					templateUrl:'app/modules/people/templates/people_list',
+					templateUrl:'app/modules/people/templates/people_list.html',
 					controller:'PeopleControllerList',
 					controllerAs:'vm'
 				})

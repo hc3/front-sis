@@ -20,6 +20,7 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use(compress()) // Compress response data with gzip
   // app.use(favicon(__dirname + '/favicon.ico'))
+  app.use('/',express.static('../../src/client'));
 
 
 /* Cria as rotas dinamicamente a partir dos módulos */

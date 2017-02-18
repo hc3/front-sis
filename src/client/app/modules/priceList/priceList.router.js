@@ -13,7 +13,7 @@
 
 				.state('listPriceList', {
 					url:'/priceList',
-					templateUrl:'app/modules/priceList/templates/priceList_list',
+					templateUrl:'app/modules/priceList/templates/priceList_list.html',
 					controller:'PriceListControllerList',
 					controllerAs:'vm'
 				})

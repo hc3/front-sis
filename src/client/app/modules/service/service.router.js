@@ -13,7 +13,7 @@
 
 				.state('listService', {
 					url:'/service',
-					templateUrl:'app/modules/service/templates/service_list',
+					templateUrl:'app/modules/service/templates/service_list.html',
 					controller:'ServiceControllerList',
 					controllerAs:'vm'
 				})
