@@ -30,10 +30,10 @@
 		vm.insert = insert;
 		vm.cancel = $mdDialog.cancel;
 
-		function insert() {
+		function insert(form) {
 			return ServiceService.new(vm.service)
 				.then(function(data) {
-					cleanForm(vm.serviceForm);
+					cleanForm(form);
 					vm.cancel();
 					$state.reload();
 				})
@@ -52,11 +52,11 @@
 			vm.service = angular.copy(data)
 		});
 
-		function insert() {
+		function insert(form) {
 			return ServiceService.edit(vm.service)
 				.then(function(data) {
 					console.log(data);
-					cleanForm(vm.serviceForm);
+					cleanForm(form);
 					vm.cancel();
 					$state.reload();
 				})
