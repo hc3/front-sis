@@ -57,7 +57,7 @@
 			};
 
 			function edit(data) {
-				return $http.put('/api/services',{params:id});
+				return $http.put('/api/services/'+data.id,{params:data});
 			};
 
 			function remove(data) {

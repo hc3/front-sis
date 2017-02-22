@@ -11,8 +11,8 @@
 
 	ServiceControllerNew.$inject = ['ServiceService', '$state', '$stateParams', '$mdDialog'];
 	ServiceControllerList.$inject = ['ServiceService', '$state', '$stateParams', '$mdDialog'];
-	ServiceControllerEdit.$inject = ['$mdDialog', 'serviceSelected'];
 	ServiceControllerView.$inject = [];
+	ServiceControllerEdit.$inject = ['$mdDialog', 'serviceSelected','ServiceService', '$state'];
 	ServiceControllerRemove.$inject = ['$mdDialog', 'serviceSelected','ServiceService', '$state'];
 
 	function cleanForm(form) {
@@ -23,24 +23,68 @@
         }
 	};
 
-
 	function ServiceControllerNew(ServiceService, $state, stateParams, $mdDialog) {
 		var vm = this;
+		vm.reload = false;
 		vm.service = {};
-		vm.teste = "testando";
 		vm.insert = insert;
 		vm.cancel = $mdDialog.cancel;
 
 		function insert() {
 			return ServiceService.new(vm.service)
 				.then(function(data) {
-					vm.cancel();
-					vm.listAll();
 					cleanForm(vm.serviceForm);
+					vm.cancel();
+					$state.reload();
 				})
 				.catch(function(error) {
 					console.log(error);
 				});
+		};
+	};
+
+	function ServiceControllerEdit($mdDialog, serviceSelected, ServiceService, $state) {
+		var vm = this;
+		vm.cancel = $mdDialog.cancel;
+		vm.insert = insert;
+		//vm.service = 
+		serviceSelected.map(function(data) {
+			vm.service = angular.copy(data)
+		});
+
+		function insert() {
+			return ServiceService.edit(vm.service)
+				.then(function(data) {
+					console.log(data);
+					cleanForm(vm.serviceForm);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function(error) {
+					console.log(error);
+				})
+		};
+	};
+
+	function ServiceControllerView() {
+		return
+	};
+
+	function ServiceControllerRemove($mdDialog, serviceSelected, ServiceService, $state) {
+		var vm = this;
+		vm.cancel = $mdDialog.cancel;
+		vm.remove = remove;
+
+		function remove() {
+			return ServiceService.remove(serviceSelected[0]._id)
+				.then(function(data) {
+					console.log(data);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function(error) {
+					console.log(error);
+				})
 		};
 	};
 
@@ -77,7 +121,6 @@
 				.then(function(data) {
 					vm.listService = data.data;
 					vm.reload = false;
-					return vm.listservice;
 				})
 				.catch(function(error) {
 					console.log(error);
@@ -104,7 +147,7 @@
 					serviceSelected: vm.selected
 				},
 				templateUrl: 'app/modules/service/templates/delete-dialog.html',
-			}).then(vm.listAll);
+			})
 		};
 
 		function insert(event) {
@@ -115,7 +158,7 @@
 				focusOnOpen: false,
 				targetEvent: event,
 				templateUrl: 'app/modules/service/templates/service_new.html',
-			}).then(vm.listAll);
+			})
 		};
 
 		function edit(event) {
@@ -129,46 +172,9 @@
 					serviceSelected: vm.selected
 				},
 				templateUrl: 'app/modules/service/templates/service_new.html',
-			}).then(vm.listAll);
+			})
 		};
 
 	};
-
-	function ServiceControllerEdit($mdDialog, serviceSelected) {
-		var vm = this;
-		vm.cancel = $mdDialog.cancel;
-		vm.insert = insert;
-		vm.service = serviceSelected[0];
-
-		function insert() {
-			console.log('service selected',serviceSelected);
-			console.log('service',vm.service);
-		};
-	};
-
-	function ServiceControllerView() {
-		return
-	};
-
-	function ServiceControllerRemove($mdDialog, serviceSelected, ServiceService, $state) {
-		var vm = this;
-		vm.cancel = $mdDialog.cancel;
-
-		vm.remove = remove;
-
-		function remove() {
-			return ServiceService.remove(serviceSelected[0]._id)
-				.then(function(data) {
-					$state.go('listService');
-				})
-				.catch(function(error) {
-					console.log(error);
-				})
-			//console.log('removendo produto', serviceSelected[0]);
-		}
-		//console.log('MDDIALOG',service);
-	};
-
-
 
 })();
