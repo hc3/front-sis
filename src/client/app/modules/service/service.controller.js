@@ -32,11 +32,10 @@
 		vm.cancel = $mdDialog.cancel;
 
 		function insert() {
-			//console.log('to no insert');
-			//console.log(vm.service);
 			return ServiceService.new(vm.service)
 				.then(function(data) {
 					vm.cancel();
+					vm.listAll();
 					cleanForm(vm.serviceForm);
 				})
 				.catch(function(error) {
