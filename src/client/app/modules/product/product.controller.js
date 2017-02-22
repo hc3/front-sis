@@ -11,22 +11,79 @@
 
 	ProductControllerNew.$inject = ['ProductService', '$state', '$stateParams', '$mdDialog'];
 	ProductControllerList.$inject = ['ProductService', '$state', '$stateParams', '$mdDialog'];
-	ProductControllerEdit.$inject = ['$mdDialog', 'productSelected'];
 	ProductControllerView.$inject = [];
-	ProductControllerRemove.$inject = ['$mdDialog', 'productSelected'];
+	ProductControllerEdit.$inject = ['$mdDialog', 'productSelected','ProductService', '$state'];
+	ProductControllerRemove.$inject = ['$mdDialog', 'productSelected','ProductService', '$state'];
 
+
+	function cleanForm(form) {
+        if(form) {
+            product = {};
+            form.$setPristine();
+            form.$setUntouched();
+        }
+	};
 
 	function ProductControllerNew(ProductService, $state, stateParams, $mdDialog) {
 		var vm = this;
+		vm.reload = false;
 		vm.product = {};
-		vm.teste = "testando";
 		vm.insert = insert;
 		vm.cancel = $mdDialog.cancel;
 
-		function insert() {
-			console.log('to no insert');
-			console.log(vm.product);
-			//return ProductService.newData(vm.product);
+		function insert(form) {
+			return ProductService.new(vm.product)
+				.then(function(data) {
+					cleanForm(form);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
+		};
+	};
+
+	function ProductControllerEdit($mdDialog, productSelected, ProductService, $state) {
+		var vm = this;
+		vm.cancel = $mdDialog.cancel;
+		vm.insert = insert;
+		productSelected.map(function(data) {
+			vm.product = angular.copy(data)
+		});
+
+		function insert(form) {
+			return ProductService.edit(vm.product)
+				.then(function(data) {
+					console.log(data);
+					cleanForm(form);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function(error) {
+					console.log(error);
+				})
+		};
+	};
+
+	function ProductControllerView() {
+		return
+	};
+
+	function ProductControllerRemove($mdDialog, productSelected, ProductService, $state) {
+		var vm = this;
+		vm.cancel = $mdDialog.cancel;
+		vm.remove = remove;
+
+		function remove() {
+			return ProductService.remove(productSelected[0]._id)
+				.then(function(data) {
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function(error) {
+					console.log(error);
+				})
 		};
 	};
 
@@ -52,16 +109,21 @@
 		vm.delete = remove;
 		vm.insert = insert;
 		vm.edit = edit;
-
+		/* -------------------- */
 
 		/* FUNÇÕES */
 		listAll();
 
 		function listAll() {
-			//vm.reload = true; ANTES DO CALLBACK
-			vm.listProduct = ProductService.listAll();
-			//vm.reload = false; DEPOIS DO CALLBACK
-			//return vm.listProduct;
+			vm.reload = true
+			return ProductService.listAll()
+				.then(function(data) {
+					vm.listProduct = data.data;
+					vm.reload = false;
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		};
 
 		function removeFilter() {
@@ -84,7 +146,7 @@
 					productSelected: vm.selected
 				},
 				templateUrl: 'app/modules/product/templates/delete-dialog.html',
-			}).then(vm.listAll);
+			})
 		};
 
 		function insert(event) {
@@ -95,7 +157,7 @@
 				focusOnOpen: false,
 				targetEvent: event,
 				templateUrl: 'app/modules/product/templates/product_new.html',
-			}).then(vm.listAll);
+			})
 		};
 
 		function edit(event) {
@@ -109,39 +171,9 @@
 					productSelected: vm.selected
 				},
 				templateUrl: 'app/modules/product/templates/product_new.html',
-			}).then(vm.listAll);
+			})
 		};
 
 	};
-
-	function ProductControllerEdit($mdDialog, productSelected) {
-		var vm = this;
-		vm.cancel = $mdDialog.cancel;
-		vm.insert = insert;
-		vm.product = productSelected[0];
-
-		function insert() {
-			console.log('product selected',productSelected);
-			console.log('product',vm.product);
-		};
-	};
-
-	function ProductControllerView() {
-		return
-	};
-
-	function ProductControllerRemove($mdDialog, productSelected) {
-		var vm = this;
-		vm.cancel = $mdDialog.cancel;
-
-		vm.remove = remove;
-
-		function remove() {
-			console.log('removendo produto', productSelected[0]);
-		}
-		//console.log('MDDIALOG',product);
-	};
-
-
 
 })();

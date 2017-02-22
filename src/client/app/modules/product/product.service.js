@@ -58,23 +58,23 @@
 			return service;
 
 			function newData(data) {
-				return products.push(data);
+				return $http.post('/api/products',data);
 			};
 
 			function listOne(id) {
-				return
+				return $http.get('/api/products',{params:id});
 			};
 
 			function listAll() {
-				return products;
+				return $http.get('/api/products');
 			};
 
 			function edit(data) {
-				return
+				return $http.put('/api/products/'+data._id,data,{params:data});
 			};
 
 			function remove(data) {
-				return
+				return $http.delete('/api/products/'+data,{params:data});
 			};
 		}
 })();
