@@ -18,9 +18,20 @@
 			};
 
 			var peoples = [{
-				name:'TESTE 01',
 				codeInterno:'001',
-				tipo:'FISICA',
+				tipo:'CLIENTE',
+				fisica:{
+					razao_social:'',
+					cpf:'',
+					rg:'',
+					dt_nascimento:''
+				},
+				juridica:{
+					razao_socail:'',
+					nome_fantasia:'',
+					cnpj:'',
+					ie:''
+				},
 				endereco:{
 					cep:'48970-000',
 					rua:'RUA TESTE 01',

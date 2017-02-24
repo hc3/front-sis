@@ -1,7 +1,10 @@
 module.exports = [
-  'name', 
+  'codeInterno', 
   'active',
-  'email',
-  'password',
+  'tipo',
+  'fisica',
+  'juridica',
+  'endereco',
+  'contato',
   'created_at'
 ]
