@@ -5,9 +5,7 @@ const DEFAULT = {
 }
 const PROPS = {
   type: String,
-  required: true,
-  enum: ['CLIENTE', 'FORNECEDOR'],
-  default: 'CLIENTE'
+  required: true
 }
 
 const atomConfig = Object.assign({}, DEFAULT, PROPS)

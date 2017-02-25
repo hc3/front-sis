@@ -4,13 +4,10 @@ const DEFAULT = {
   VALIDATE: false
 }
 const PROPS = {
-  type: String,
-  required: true,
-  enum: ['CLIENTE', 'FORNECEDOR'],
-  default: 'CLIENTE'
+  type: Date,
+  required: true
 }
 
 const atomConfig = Object.assign({}, DEFAULT, PROPS)
 
 module.exports = require('./../_factories/atom')(atomConfig)
-
