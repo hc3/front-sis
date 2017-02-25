@@ -4,7 +4,7 @@ const DEFAULT = {
   ATOM_NAME: CONFIG.ATOM_NAME,
   VALIDATE: false,
   COMPOSE: true,
-  ARRAY: true
+  ARRAY: false
 }
 
 const razao_social = {
@@ -38,8 +38,6 @@ const ie = {
     ARRAY: false,
     type:String,
 }
-
-
 
 const PROPS = {
   razao_social,
