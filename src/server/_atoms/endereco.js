@@ -4,7 +4,7 @@ const DEFAULT = {
   ATOM_NAME: CONFIG.ATOM_NAME,
   VALIDATE: false,
   COMPOSE: true,
-  ARRAY: true
+  //ARRAY: true
 }
 
 const cep = {
@@ -71,7 +71,8 @@ const PROPS = {
     bairro,
     pais,
     estado,
-    cidade
+    cidade,
+    type:Object
 }
 
 const atomConfig = Object.assign({}, DEFAULT, PROPS)

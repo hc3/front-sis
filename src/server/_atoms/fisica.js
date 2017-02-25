@@ -4,7 +4,7 @@ const DEFAULT = {
   ATOM_NAME: CONFIG.ATOM_NAME,
   VALIDATE: false,
   COMPOSE: true,
-  ARRAY: true
+  ARRAY: false
 }
 
 const razao_social = {
@@ -43,7 +43,8 @@ const PROPS = {
   razao_social,
   cpf,
   rg,
-  dt_nascimento
+  dt_nascimento,
+  type:Object
 }
 
 const atomConfig = Object.assign({}, DEFAULT, PROPS)

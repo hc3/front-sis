@@ -4,7 +4,7 @@ const DEFAULT = {
   ATOM_NAME: CONFIG.ATOM_NAME,
   VALIDATE: false,
   COMPOSE: true,
-  ARRAY: true
+  //ARRAY: true
 }
 
 const telefone1 = {
@@ -34,7 +34,8 @@ const email = {
 const PROPS = {
     telefone1,
     telefone2,
-    email
+    email,
+    type:Object
 }
 
 const atomConfig = Object.assign({}, DEFAULT, PROPS)

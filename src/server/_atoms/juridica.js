@@ -13,6 +13,7 @@ const razao_social = {
     COMPOSE: false,
     ARRAY: false,
     type:String,
+    default:''
 }
 
 const nome_fantasia = {
@@ -21,6 +22,7 @@ const nome_fantasia = {
     COMPOSE: false,
     ARRAY: false,
     type:String,
+    default:''
 }
 
 const cnpj = {
@@ -29,6 +31,7 @@ const cnpj = {
     COMPOSE: false,
     ARRAY: false,
     type:String,
+    default:''
 }
 
 const ie = {
@@ -37,13 +40,15 @@ const ie = {
     COMPOSE: false,
     ARRAY: false,
     type:String,
+    default:''
 }
 
 const PROPS = {
   razao_social,
   nome_fantasia,
   cnpj,
-  ie
+  ie,
+  type:Object
 }
 
 const atomConfig = Object.assign({}, DEFAULT, PROPS)

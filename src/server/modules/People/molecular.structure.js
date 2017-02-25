@@ -2,9 +2,9 @@ module.exports = [
   'codeInterno', 
   'active',
   'tipo',
-  //'fisica',
+  'fisica',
   'juridica',
-  //'endereco',
-  //'contato',
+  'endereco',
+  'contato',
   'created_at'
 ]
