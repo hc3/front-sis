@@ -1,15 +1,6 @@
+<!-- ### 1 LINHA ### -->
 <div layout-gt-sm="row">
-  <md-input-container class="md-block" flex-gt-sm flex="55">
-    <label>Nome</label>
-    <input md-maxlength="30" required name="nome" data-ng-model="vm.people.name" />
-    <div ng-messages="peopleForm.name.$error">
-      <div ng-message="required">Nome é obrigatório</div>
-    </div>
-  </md-input-container>
-  <div flex="5" hide-xs hide-sm>
-    <!-- Spacer //-->
-  </div>
-  <md-input-container class="md-block" flex-gt-sm flex="20">
+  <md-input-container class="md-block" flex-gt-sm flex="45">
     <label>Código Interno</label>
     <input md-maxlength="5" name="codeInterno" data-ng-model="vm.people.codeInterno" />
     <div ng-messages="peopleForm.codeInterno.$error">
@@ -19,7 +10,7 @@
   <div flex="5" hide-xs hide-sm>
     <!-- Spacer //-->
   </div>
-  <md-input-container class="md-block" flex-gt-sm flex="20">
+  <md-input-container class="md-block" flex-gt-sm flex="50">
     <label>Tipo</label>
     <md-select data-ng-model="vm.people.tipo" required data-ng-change="vm.changeTypePeople(vm.people.tipo)" placeholder="Fisico/Juridico"
       class="md-no-underline" md-no-asterisk="false">
@@ -28,53 +19,89 @@
     </md-select>
   </md-input-container>
 </div>
-<div layout-gt-sm="row" ng-show="vm.typePeoplePhysical" id="vm.typePeople">
+<!-- #### fim 1 linha ### -->
+<!-- ## VEIRIFCAÇÃO SE É FISICA OU JURIDICA 2 LINHA ## -->
+<div ng-show="vm.typePeoplePhysical" id="vm.typePeople">
   <!-- CAMPOS PESSOA FISICA -->
-  <md-input-container class="md-block" flex-gt-sm flex="65">
-    <label>CPF</label>
-    <input md-maxlength="5" name="cpf" data-ng-model="vm.people.physical.cpf" />
-    <div ng-messages="peopleForm.cpf.$error">
-      <div ng-message="required">CPF é obrigatório</div>
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm flex="65">
+      <label>Razão Social</label>
+      <input md-maxlength="50" name="razao_social" data-ng-model="vm.people.fisica.razao_social" />
+      <div ng-messages="peopleForm.razao_social.$error">
+        <div ng-message="required">Razão Social é obrigatório</div>
+      </div>
+    </md-input-container>
+    <div flex="5" hide-xs hide-sm>
+      <!-- Spacer //-->
     </div>
-  </md-input-container>
-  <div flex="5" hide-xs hide-sm>
-    <!-- Spacer //-->
+    <md-input-container flex="30">
+      <label>Data nascimento</label>
+      <md-datepicker ng-model="vm.people.fisica.dt_nascimento"></md-datepicker>
+    </md-input-container>
   </div>
-  <md-input-container class="md-block" flex-gt-sm flex="17">
-    <label>RG</label>
-    <input md-maxlength="5" name="rg" data-ng-model="vm.people.physical.rg" />
-    <div ng-messages="peopleForm.rg.$error">
-      <div ng-message="required">RG é obrigatório</div>
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm flex="50">
+      <label>CPF</label>
+      <input md-maxlength="20" name="cpf" data-ng-model="vm.people.fisica.cpf" />
+      <div ng-messages="peopleForm.cpf.$error">
+        <div ng-message="required">cpf é obrigatório</div>
+      </div>
+    </md-input-container>
+    <div flex="5" hide-xs hide-sm>
     </div>
-  </md-input-container>
-  <div flex="5" hide-xs hide-sm>
-    <!-- Spacer //-->
+    <md-input-container class="md-block" flex-gt-sm flex="45">
+      <label>RG</label>
+      <input md-maxlength="20" name="rg" data-ng-model="vm.people.fisica.rg" />
+      <div ng-messages="peopleForm.rg.$error">
+        <div ng-message="required">RG é obrigatório</div>
+      </div>
+    </md-input-container>
   </div>
-  <md-input-container flex="8">
-    <label>Data nascimento</label>
-    <md-datepicker ng-model="vm.people.physical.rg"></md-datepicker>
-  </md-input-container>
 </div>
-<div layout-gt-sm="row" ng-show="vm.typePeopleLegal">
-  <!-- CAMPOS PESSOA JURIDICA -->
-  <md-input-container class="md-block" flex-gt-sm flex="60">
-    <label>CNPJ</label>
-    <input md-maxlength="5" name="cnpj" data-ng-model="vm.people.legal.cnpj" />
-    <div ng-messages="peopleForm.cnpj.$error">
-      <div ng-message="required">CNPJ é obrigatório</div>
+<!-- ## fim verificação ## -->
+<!-- ## VEIRIFICAÇÃO SE É FISICA OU JURIDICA 2 LINHA ## -->
+<div ng-show="vm.typePeopleLegal">
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm flex="45">
+      <label>Razão Social</label>
+      <input md-maxlength="50" name="razao_social" data-ng-model="vm.people.juridica.razao_social" />
+      <div ng-messages="peopleForm.razao_social.$error">
+        <div ng-message="required">Razão Social é obrigatório</div>
+      </div>
+    </md-input-container>
+    <div flex="5" hide-xs hide-sm>
+      <!-- Spacer //-->
     </div>
-  </md-input-container>
-  <div flex="5" hide-xs hide-sm>
-    <!-- Spacer //-->
+    <md-input-container class="md-block" flex-gt-sm flex="50">
+      <label>Nome Fantasia</label>
+      <input md-maxlength="30" name="nome_fantasia" data-ng-model="vm.people.juridica.nome_fantasia" />
+      <div ng-messages="peopleForm.nome_fantasia.$error">
+        <div ng-message="required">nome fantasia é obrigatório</div>
+      </div>
+    </md-input-container>
   </div>
-  <md-input-container class="md-block" flex-gt-sm flex="45">
-    <label>IE</label>
-    <input md-maxlength="5" name="ie" data-ng-model="vm.people.legal.ie" />
-    <div ng-messages="peopleForm.ie.$error">
-      <div ng-message="required">IE é obrigatório</div>
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm flex="60">
+      <label>CNPJ</label>
+      <input md-maxlength="20" name="cnpj" data-ng-model="vm.people.juridica.cnpj" />
+      <div ng-messages="peopleForm.cnpj.$error">
+        <div ng-message="required">CNPJ é obrigatório</div>
+      </div>
+    </md-input-container>
+    <div flex="5" hide-xs hide-sm>
+      <!-- Spacer //-->
     </div>
-  </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm flex="45">
+      <label>IE</label>
+      <input md-maxlength="20" name="ie" data-ng-model="vm.people.juridica.ie" />
+      <div ng-messages="peopleForm.ie.$error">
+        <div ng-message="required">IE é obrigatório</div>
+      </div>
+    </md-input-container>
+  </div>
 </div>
+<!-- fim pessoa juridica -->
+<!-- ENDEREÇO -->
 <div layout-gt-sm="row" id="peopleEnderecoRow1">
   <md-input-container class="md-block" flex-gt-sm flex="35">
     <label>Cep</label>

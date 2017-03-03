@@ -11,10 +11,10 @@
 
 			$stateProvider
 
-				.state('listProduct', {
-					url:'/product',
-					templateUrl:'app/modules/product/templates/product_list.html',
-					controller:'ProductControllerList',
+				.state('listVehicle', {
+					url:'/vehicle',
+					templateUrl:'app/modules/vehicle/templates/vehicle_list.html',
+					controller:'VehicleControllerList',
 					controllerAs:'vm'
 				})
 		}

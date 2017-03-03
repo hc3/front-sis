@@ -3,39 +3,120 @@
 
 	angular
 		.module('app')
-		.controller('ProductControllerNew', ProductControllerNew)
-		.controller('ProductControllerList', ProductControllerList)
-		.controller('ProductControllerEdit', ProductControllerEdit)
-		.controller('ProductControllerView', ProductControllerView)
-		.controller('ProductControllerRemove', ProductControllerRemove)
+		.controller('VehicleControllerNew', VehicleControllerNew)
+		.controller('VehicleControllerList', VehicleControllerList)
+		.controller('VehicleControllerEdit', VehicleControllerEdit)
+		.controller('VehicleControllerView', VehicleControllerView)
+		.controller('VehicleControllerRemove', VehicleControllerRemove)
 
-	ProductControllerNew.$inject = ['ProductService', '$state', '$stateParams', '$mdDialog'];
-	ProductControllerList.$inject = ['ProductService', '$state', '$stateParams', '$mdDialog'];
-	ProductControllerEdit.$inject = ['$mdDialog', 'productSelected'];
-	ProductControllerView.$inject = [];
-	ProductControllerRemove.$inject = ['$mdDialog', 'productSelected'];
+	VehicleControllerNew.$inject = ['VehicleService', '$state', '$stateParams', '$mdDialog', 'PeopleService', '$timeout'];
+	VehicleControllerList.$inject = ['VehicleService', '$state', '$stateParams', '$mdDialog', 'PeopleService', '$timeout'];
+	VehicleControllerView.$inject = [];
+	VehicleControllerEdit.$inject = ['$mdDialog', 'vehicleSelected', 'VehicleService', '$state'];
+	VehicleControllerRemove.$inject = ['$mdDialog', 'vehicleSelected', 'VehicleService', '$state'];
 
+	function cleanForm(form) {
+		if (form) {
+			service = {};
+			form.$setPristine();
+			form.$setUntouched();
+		}
+	};
 
-	function ProductControllerNew(ProductService, $state, stateParams, $mdDialog) {
+	function VehicleControllerNew(VehicleService, $state, stateParams, $mdDialog, PeopleService, $timeout) {
 		var vm = this;
-		vm.product = {};
-		vm.teste = "testando";
+		vm.reload = false;
+		vm.vehicle = {};
+		vm.listPeople = [];
 		vm.insert = insert;
 		vm.cancel = $mdDialog.cancel;
+		vm.listAllPeople = listAllPeople;
+		vm.clearSearchTerm = clearSearchTerm;
 
-		function insert() {
-			console.log('to no insert');
-			console.log(vm.product);
-			//return ProductService.newData(vm.product);
+		function insert(form) {
+			return VehicleService.new(vm.vehicle)
+				.then(function (data) {
+					cleanForm(form);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
+		};
+
+		function clearSearchTerm() {
+			vm.searchTerm = '';
+		};
+
+		function listAllPeople() {
+			console.log('to aqui');
+			return $timeout(function () {
+				PeopleService.listAll()
+					.then(function (data) {
+						vm.listPeople = data.data;
+					})
+					.catch(function (error) {
+						console.log(error);
+					})
+
+			}, 650);
+		}
+	};
+
+	function VehicleControllerEdit($mdDialog, vehicleSelected, VehicleService, $state) {
+		var vm = this;
+		vm.cancel = $mdDialog.cancel;
+		vm.insert = insert;
+		//vm.vehicle = 
+		vehicleSelected.map(function (data) {
+			vm.vehicle = angular.copy(data)
+		});
+
+		function insert(form) {
+			return VehicleService.edit(vm.vehicle)
+				.then(function (data) {
+					console.log(data);
+					cleanForm(form);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function (error) {
+					console.log(error);
+				})
 		};
 	};
 
-	function ProductControllerList(ProductService, $state, stateParams, $mdDialog) {
+	function VehicleControllerView() {
+		return
+	};
+
+	function VehicleControllerRemove($mdDialog, vehicleSelected, VehicleService, $state) {
+		var vm = this;
+		vm.cancel = $mdDialog.cancel;
+		vm.remove = remove;
+
+		function remove() {
+			return VehicleService.remove(vehicleSelected[0]._id)
+				.then(function (data) {
+					console.log(data);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function (error) {
+					console.log(error);
+				})
+		};
+	};
+
+	function VehicleControllerList(VehicleService, $state, stateParams, $mdDialog, PeopleService, $timeout) {
 		var vm = this;
 		/* VARIAVEIS BINDING */
-		vm.listProduct = [];
+		vm.listVehicle = [];
+		vm.listPeople = [];
 		vm.selected = [];
 		vm.reload = false;
+		vm.searchTerm = '';
 		vm.filter = {
 			form: '',
 			show: '',
@@ -52,16 +133,41 @@
 		vm.delete = remove;
 		vm.insert = insert;
 		vm.edit = edit;
-
+		vm.listAllPeople = listAllPeople;
+		vm.clearSearchTerm = clearSearchTerm;
+		/* -------------------- */
 
 		/* FUNÇÕES */
 		listAll();
 
+		function clearSearchTerm() {
+			vm.searchTerm = '';
+		};
+
+		function listAllPeople() {
+			console.log('to aqui');
+			return $timeout(function () {
+				PeopleService.listAll()
+					.then(function (data) {
+						vm.listPeople = data.data;
+					})
+					.catch(function (error) {
+						console.log(error);
+					})
+
+			}, 650);
+		}
+
 		function listAll() {
-			//vm.reload = true; ANTES DO CALLBACK
-			vm.listProduct = ProductService.listAll();
-			//vm.reload = false; DEPOIS DO CALLBACK
-			//return vm.listProduct;
+			vm.reload = true
+			return VehicleService.listAll()
+				.then(function (data) {
+					vm.listVehicle = data.data;
+					vm.reload = false;
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 		};
 
 		function removeFilter() {
@@ -76,72 +182,42 @@
 		function remove(event) {
 			$mdDialog.show({
 				clickOutsideToClose: true,
-				controller: 'ProductControllerRemove',
+				controller: 'VehicleControllerRemove',
 				controllerAs: 'vm',
 				focusOnOpen: false,
 				targetEvent: event,
 				locals: {
-					productSelected: vm.selected
+					vehicleSelected: vm.selected
 				},
-				templateUrl: 'app/modules/product/templates/delete-dialog.html',
-			}).then(vm.listAll);
+				templateUrl: 'app/modules/vehicle/templates/delete-dialog.html',
+			})
 		};
 
 		function insert(event) {
 			$mdDialog.show({
 				clickOutsideToClose: true,
-				controller: 'ProductControllerNew',
+				controller: 'VehicleControllerNew',
 				controllerAs: 'vm',
 				focusOnOpen: false,
 				targetEvent: event,
-				templateUrl: 'app/modules/product/templates/product_new.html',
-			}).then(vm.listAll);
+				templateUrl: 'app/modules/vehicle/templates/vehicle_new.html',
+			})
 		};
 
 		function edit(event) {
 			$mdDialog.show({
 				clickOutsideToClose: true,
-				controller: 'ProductControllerEdit',
+				controller: 'VehicleControllerEdit',
 				controllerAs: 'vm',
 				focusOnOpen: false,
 				targetEvent: event,
 				locals: {
-					productSelected: vm.selected
+					vehicleSelected: vm.selected
 				},
-				templateUrl: 'app/modules/product/templates/product_new.html',
-			}).then(vm.listAll);
+				templateUrl: 'app/modules/vehicle/templates/vehicle_new.html',
+			})
 		};
 
 	};
-
-	function ProductControllerEdit($mdDialog, productSelected) {
-		var vm = this;
-		vm.cancel = $mdDialog.cancel;
-		vm.insert = insert;
-		vm.product = productSelected[0];
-
-		function insert() {
-			console.log('product selected',productSelected);
-			console.log('product',vm.product);
-		};
-	};
-
-	function ProductControllerView() {
-		return
-	};
-
-	function ProductControllerRemove($mdDialog, productSelected) {
-		var vm = this;
-		vm.cancel = $mdDialog.cancel;
-
-		vm.remove = remove;
-
-		function remove() {
-			console.log('removendo produto', productSelected[0]);
-		}
-		//console.log('MDDIALOG',product);
-	};
-
-
 
 })();

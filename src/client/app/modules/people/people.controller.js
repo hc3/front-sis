@@ -11,25 +11,37 @@
 
 	PeopleControllerNew.$inject = ['PeopleService', '$state', '$stateParams', '$mdDialog'];
 	PeopleControllerList.$inject = ['PeopleService', '$state', '$stateParams', '$mdDialog'];
-	PeopleControllerEdit.$inject = ['$mdDialog', 'peopleSelected'];
+	PeopleControllerEdit.$inject = ['$mdDialog', 'peopleSelected', 'PeopleService', '$state'];
 	PeopleControllerView.$inject = [];
-	PeopleControllerRemove.$inject = ['$mdDialog', 'peopleSelected'];
+	PeopleControllerRemove.$inject = ['$mdDialog', 'peopleSelected', 'PeopleService', '$state'];
 
+	function cleanForm(form) {
+		if (form) {
+			service = {};
+			form.$setPristine();
+			form.$setUntouched();
+		}
+	};
 
 	function PeopleControllerNew(PeopleService, $state, stateParams, $mdDialog) {
 		var vm = this;
 		vm.people = {};
-		vm.teste = "testando";
 		vm.insert = insert;
 		vm.cancel = $mdDialog.cancel;
 		vm.changeTypePeople = changeTypePeople;
 		vm.typePeoplePhysical = false;
 		vm.typePeopleLegal = false;
 
-		function insert() {
-			console.log('to no insert');
-			console.log(vm.people);
-			//return PeopleService.newData(vm.people);
+		function insert(form) {
+			return PeopleService.new(vm.people)
+				.then(function (data) {
+					cleanForm(form);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 		};
 
 		function changeTypePeople(type) {
@@ -43,6 +55,50 @@
 			} else {
 				return null;
 			}
+		};
+	};
+
+	function PeopleControllerEdit($mdDialog, peopleSelected, PeopleService, $state) {
+		var vm = this;
+		vm.cancel = $mdDialog.cancel;
+		vm.insert = insert;
+		peopleSelected.map(function(data) {
+			vm.people = angular.copy(data)
+		});
+
+		function insert(form) {
+			return PeopleService.edit(vm.people)
+				.then(function(data) {
+					console.log(data);
+					cleanForm(form);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function(error) {
+					console.log(error);
+				})
+		};
+	};
+
+	function PeopleControllerView() {
+		return
+	};
+
+	function PeopleControllerRemove($mdDialog, peopleSelected, PeopleService, $state) {
+		var vm = this;
+		vm.cancel = $mdDialog.cancel;
+		vm.remove = remove;
+
+		function remove() {
+			return PeopleService.remove(peopleSelected[0]._id)
+				.then(function(data) {
+					console.log(data);
+					vm.cancel();
+					$state.reload();
+				})
+				.catch(function(error) {
+					console.log(error);
+				})
 		};
 	};
 
@@ -74,10 +130,15 @@
 		listAll();
 
 		function listAll() {
-			//vm.reload = true; ANTES DO CALLBACK
-			vm.listPeople = PeopleService.listAll();
-			//vm.reload = false; DEPOIS DO CALLBACK
-			//return vm.listPeople;
+			vm.reload = true
+			return PeopleService.listAll()
+				.then(function(data) {
+					vm.listPeople = data.data;
+					vm.reload = false;
+				})
+				.catch(function(error) {
+					console.log(error);
+				});
 		};
 
 		function removeFilter() {
@@ -100,7 +161,7 @@
 					peopleSelected: vm.selected
 				},
 				templateUrl: 'app/modules/people/templates/delete-dialog.html',
-			}).then(vm.listAll);
+			})
 		};
 
 		function insert(event) {
@@ -111,7 +172,7 @@
 				focusOnOpen: false,
 				targetEvent: event,
 				templateUrl: 'app/modules/people/templates/people_new.html',
-			}).then(vm.listAll);
+			})
 		};
 
 		function edit(event) {
@@ -125,39 +186,9 @@
 					peopleSelected: vm.selected
 				},
 				templateUrl: 'app/modules/people/templates/people_new.html',
-			}).then(vm.listAll);
+			})
 		};
 
 	};
-
-	function PeopleControllerEdit($mdDialog, peopleSelected) {
-		var vm = this;
-		vm.cancel = $mdDialog.cancel;
-		vm.insert = insert;
-		vm.people = peopleSelected[0];
-
-		function insert() {
-			console.log('people selected',peopleSelected);
-			console.log('people',vm.people);
-		};
-	};
-
-	function PeopleControllerView() {
-		return
-	};
-
-	function PeopleControllerRemove($mdDialog, peopleSelected) {
-		var vm = this;
-		vm.cancel = $mdDialog.cancel;
-
-		vm.removePeople = removePeople;
-
-		function removePeople() {
-			console.log('removendo pessoa', peopleSelected[0].codeInterno);
-		}
-		//console.log('MDDIALOG',people);
-	};
-
-
 
 })();

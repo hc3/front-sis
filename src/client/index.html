@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
-    <link rel="stylesheet" href="vendor/angular-material-sidemenu/dest/angular-material-sidemenu.css">
-    <link rel="stylesheet" href="vendor/angular-material-data-table/dist/md-data-table.css">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="vendor/angular-material/angular-material.css">
+  <link rel="stylesheet" href="vendor/angular-material-sidemenu/dest/angular-material-sidemenu.css">
+  <link rel="stylesheet" href="vendor/angular-material-data-table/dist/md-data-table.css">
   <!--  <link rel="stylesheet" href="vendor/mdi/css/materialdesignicons.css"> -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-    <body data-ng-app="app">
-    <!-- CONTENT -->
-        <div layout="row">
-            <div flex="100">
-                <md-toolbar class="main-header md-whiteframe-3dp">
-                    <div class="md-toolbar-tools">
-                         <h1 flex>HC3 Solutions - ERP</h1>
-                    </div>
-                </md-toolbar>         
-            </div>
-            
+
+<body data-ng-app="app">
+  <!-- CONTENT -->
+  <div layout="row">
+    <div flex="100">
+      <md-toolbar class="main-header md-whiteframe-3dp">
+        <div class="md-toolbar-tools">
+          <h1 flex>HC3 Solutions - ERP</h1>
         </div>
-
-        <div layout="row">
-        <!-- MENU LATERAL -->
-          <div flex="20">
-            <md-sidemenu>
-              <md-sidemenu-group>
-                <md-subheader class="md-no-sticky">MENU SISTEMA</md-subheader>
-
-                <md-sidemenu-content md-icon="home" md-heading="Cadastros" md-arrow="true">
-                  <md-sidemenu-button ui-sref="listPeople">Pessoa - DESAFIO</md-sidemenu-button>
-                  <md-sidemenu-button ui-sref="listProduct">Produto - OK</md-sidemenu-button>
-                  <md-sidemenu-button ui-sref="listPriceList">Tabela de Preço</md-sidemenu-button>
-                  <md-sidemenu-button ui-sref="listService">Serviço - OK</md-sidemenu-button>
-                  <md-sidemenu-button href="#">Veiculo</md-sidemenu-button>
-                  <md-sidemenu-button href="#">Ordem Serviço</md-sidemenu-button>
-                </md-sidemenu-content>
-                <md-sidemenu-content md-icon="settings" md-heading="Configuração" md-arrow="true">
-                  <md-sidemenu-button href="#">Ajustes</md-sidemenu-button>
-                </md-sidemenu-content>
-              </md-sidemenu-group>
-
-            <!-- SUB MENU - CANCELADO POR ENQUANTO
+      </md-toolbar>
+    </div>
+  </div>
+  <div layout="row">
+    <!-- MENU LATERAL -->
+    <div flex="20">
+      <md-sidemenu>
+        <md-sidemenu-group>
+          <md-subheader class="md-no-sticky">MENU SISTEMA</md-subheader>
+          <md-sidemenu-content md-icon="home" md-heading="Cadastros" md-arrow="true">
+            <md-sidemenu-button ui-sref="listPeople">Pessoa - OK</md-sidemenu-button>
+            <md-sidemenu-button ui-sref="listProduct">Produto - OK</md-sidemenu-button>
+            <md-sidemenu-button ui-sref="listPriceList">Tabela de Preço - </md-sidemenu-button>
+            <md-sidemenu-button ui-sref="listService">Serviço - OK</md-sidemenu-button>
+            <md-sidemenu-button ui-sref="listVehicle">Veiculo - </md-sidemenu-button>
+            <md-sidemenu-button href="#">Ordem Serviço</md-sidemenu-button>
+          </md-sidemenu-content>
+          <md-sidemenu-content md-icon="settings" md-heading="Configuração" md-arrow="true">
+            <md-sidemenu-button href="#">Ajustes</md-sidemenu-button>
+          </md-sidemenu-content>
+        </md-sidemenu-group>
+        <!-- SUB MENU - CANCELADO POR ENQUANTO
               <md-sidemenu-group>
                 <md-divider></md-divider>
 
@@ -50,57 +48,48 @@
                 <md-sidemenu-button href="#">Menu 4</md-sidemenu-button>
               </md-sidemenu-group>
               -->
-            </md-sidemenu>
-          </div>
-
-
-        <!-- FOOTER -->
-          <div flex="80">
-            <ui-view></ui-view>
-          </div>
-
-        </div>
-    
-
-
-
-
-        <script src="vendor/jquery/dist/jquery.js"></script>
-        <script src="vendor/angular/angular.js"></script>
-        <script src="vendor/angular-animate/angular-animate.js"></script>
-        <script src="vendor/angular-aria/angular-aria.js"></script>
-        <script src="vendor/angular-material/angular-material.js"></script>
-        <script src="vendor/angular-messages/angular-messages.js"></script>
-        <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
-        <script src="vendor/angular-material-sidemenu/dest/angular-material-sidemenu.js"></script>
-        <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
-
-
-        <script src="app/app.module.js"></script>
-        <!-- PEOPLE -->
-        <script src="app/modules/people/people.module.js"></script>
-        <script src="app/modules/people/people.controller.js"></script>
-        <script src="app/modules/people/people.router.js"></script>
-        <script src="app/modules/people/people.service.js"></script>
-  
-        <!-- PRODUCT -->
-        <script src="app/modules/product/product.module.js"></script>
-        <script src="app/modules/product/product.controller.js"></script>
-        <script src="app/modules/product/product.router.js"></script>
-        <script src="app/modules/product/product.service.js"></script>
-
-        <!-- PRICELIST -->
-        <script src="app/modules/priceList/priceList.module.js"></script>
-        <script src="app/modules/priceList/priceList.controller.js"></script>
-        <script src="app/modules/priceList/priceList.router.js"></script>
-        <script src="app/modules/priceList/priceList.service.js"></script>
-
-        <!-- SERVICE -->
-        <script src="app/modules/service/service.module.js"></script>
-        <script src="app/modules/service/service.controller.js"></script>
-        <script src="app/modules/service/service.router.js"></script>
-        <script src="app/modules/service/service.service.js"></script>
-
-    </body>
+      </md-sidemenu>
+    </div>
+    <!-- FOOTER -->
+    <div flex="80">
+      <ui-view></ui-view>
+    </div>
+  </div>
+  <script src="vendor/jquery/dist/jquery.js"></script>
+  <script src="vendor/angular/angular.js"></script>
+  <script src="vendor/angular-animate/angular-animate.js"></script>
+  <script src="vendor/angular-aria/angular-aria.js"></script>
+  <script src="vendor/angular-material/angular-material.js"></script>
+  <script src="vendor/angular-messages/angular-messages.js"></script>
+  <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="vendor/angular-material-sidemenu/dest/angular-material-sidemenu.js"></script>
+  <script src="vendor/angular-material-data-table/dist/md-data-table.js"></script>
+  <script src="app/app.module.js"></script>
+  <!-- PEOPLE -->
+  <script src="app/modules/people/people.module.js"></script>
+  <script src="app/modules/people/people.controller.js"></script>
+  <script src="app/modules/people/people.router.js"></script>
+  <script src="app/modules/people/people.service.js"></script>
+  <!-- PRODUCT -->
+  <script src="app/modules/product/product.module.js"></script>
+  <script src="app/modules/product/product.controller.js"></script>
+  <script src="app/modules/product/product.router.js"></script>
+  <script src="app/modules/product/product.service.js"></script>
+  <!-- PRICELIST -->
+  <script src="app/modules/priceList/priceList.module.js"></script>
+  <script src="app/modules/priceList/priceList.controller.js"></script>
+  <script src="app/modules/priceList/priceList.router.js"></script>
+  <script src="app/modules/priceList/priceList.service.js"></script>
+  <!-- SERVICE -->
+  <script src="app/modules/service/service.module.js"></script>
+  <script src="app/modules/service/service.controller.js"></script>
+  <script src="app/modules/service/service.router.js"></script>
+  <script src="app/modules/service/service.service.js"></script>
+  <!-- VEHICLE -->
+  <script src="app/modules/vehicle/vehicle.module.js"></script>
+  <script src="app/modules/vehicle/vehicle.controller.js"></script>
+  <script src="app/modules/vehicle/vehicle.router.js"></script>
+  <script src="app/modules/vehicle/vehicle.service.js"></script>
+</body>
 
 </html>

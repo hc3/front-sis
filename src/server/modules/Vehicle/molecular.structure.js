@@ -1,7 +1,10 @@
 module.exports = [
-  'name', 
-  'active',
-  'email',
-  'password',
+  'marca',
+  'modelo', 
+  'placa',
+  'ano',
+  'cor',
+  'km_rodado',
+  'proprietario',
   'created_at'
 ]

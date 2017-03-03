@@ -1,39 +1,71 @@
 <div layout-gt-sm="row">
-  <md-input-container class="md-block" flex-gt-sm>
-    <label>Descrição</label>
-    <input md-maxlength="30" required name="descricao" data-ng-model="vm.product.descricao" />
-    <div ng-messages="productForm.name.$error">
-      <div ng-message="required">Descricao é obrigatório</div>
+  <md-input-container class="md-block" flex="45">
+    <label>Placa</label>
+    <input md-maxlength="30" required name="placa" data-ng-model="vm.vehicle.placa" />
+    <div ng-messages="vehicleForm.placa.$error">
+      <div ng-message="required">placa é obrigatório</div>
+    </div>
+  </md-input-container>
+  <div flex="5" hide-xs hide-sm>
+    <!-- Spacer //-->
+  </div>
+  <md-input-container class="md-block" flex="30">
+    <label>Marca</label>
+    <input md-maxlength="30" required name="marca" data-ng-model="vm.vehicle.marca" />
+    <div ng-messages="vehicleForm.marca.$error">
+      <div ng-message="required">marca é obrigatório</div>
+    </div>
+  </md-input-container>
+  <md-input-container class="md-block" flex="20">
+    <label>Modelo</label>
+    <input md-maxlength="30" required name="modelo" data-ng-model="vm.vehicle.modelo" />
+    <div ng-messages="vehicleForm.modelo.$error">
+      <div ng-message="required">modelo é obrigatório</div>
     </div>
   </md-input-container>
 </div>
-<div layout-gm-sm="row">
-  <md-input-container class="md-block" flex-gt-sm>
-    <label>Código Interno</label>
-    <input md-maxlength="5" name="codeInterno" data-ng-model="vm.product.codeInterno" />
-    <div ng-messages="productForm.codeInterno.$error">
-      <div ng-message="required">Código interno é obrigatório</div>
+<div layout-gt-sm="row">
+  <md-input-container class="md-block" flex="30">
+    <label>Ano</label>
+    <input md-maxlength="5" name="ano" data-ng-model="vm.vehicle.ano" />
+    <div ng-messages="vehicleForm.ano.$error">
+      <div ng-message="required">Ano é obrigatório</div>
     </div>
   </md-input-container>
-  <md-input-container class="md-block" flex-gt-sm>
-    <label>Embalagem</label>
-    <md-select data-ng-model="vm.product.embalagem" required placeholder="Caixa/Unidade"
-      class="md-no-underline" md-no-asterisk="false">
-      <md-option value="0">Caixa</md-option>
-      <md-option value="1">Und</md-option>
-    </md-select>
+  <div flex="5" hide-xs hide-sm>
+    <!-- Spacer //-->
+  </div>
+  <md-input-container class="md-block" flex="35">
+    <label>Cor</label>
+    <input md-maxlength="5" name="cor" data-ng-model="vm.vehicle.cor" />
+    <div ng-messages="vehicleForm.cor.$error">
+      <div ng-message="required">Cor é obrigatório</div>
+    </div>
   </md-input-container>
-<md-input-container class="md-block" flex-gt-sm>
-    <label>Peso</label>
-    <input md-maxlength="5" name="peso" data-ng-model="vm.product.peso" />
-    <div ng-messages="productForm.peso.$error">
+  <md-input-container class="md-block" flex="30">
+    <label>KM rodado</label>
+    <input md-maxlength="5" name="km_rodado" data-ng-model="vm.vehicle.km_rodado" />
+    <div ng-messages="vehicleForm.km_rodado.$error">
       <div ng-message="required">Peso é obrigatório</div>
     </div>
   </md-input-container>
 </div>
-  
-
+<div layout-gt-sm="row">
+  <md-input-container class="md-block" flex="75">
+    <label>Clientes</label>
+    <md-select ng-model="vm.vehicle.proprietario" md-on-close="vm.clearSearchTerm()"
+     data-md-container-class="selectdemoSelectHeader" md-on-open="vm.listAllPeople()">
+      <md-select-header class="demo-select-header">
+        <input ng-model="vm.searchTerm" type="search" placeholder="buscar clientes..." class="demo-header-searchbox md-text">
+      </md-select-header>
+      <md-optgroup label="clientes">
+        <md-option ng-value="people._id" ng-repeat="people in vm.listPeople |
+              filter:vm.searchTerm">{{people.contato.email}} | {{people.codeInterno}} | {{people.fisica.cpf}} {{people.juridica.cnpj}}</md-option>
+      </md-optgroup>
+    </md-select>
+  </md-input-container>
+</div>
 <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-  <md-button class="md-raised md-primary" type="submit" data-ng-click="vm.insert()" data-ng-disabled="vm.productForm.$invalid">Cadastrar</md-button>
+  <md-button class="md-raised md-primary" type="submit" data-ng-click="vm.insert()" data-ng-disabled="vm.vehicleForm.$invalid">Cadastrar</md-button>
   <md-button class="md-raised" data-ng-click="vm.cancel()">Cancelar</md-button>
 </section>

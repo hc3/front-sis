@@ -3,11 +3,11 @@
 
 	angular
 		.module('app')
-		.service('ProductService', ProductService);
+		.service('VehicleService', VehicleService);
 
-		ProductService.$inject = ['$http'];
+		VehicleService.$inject = ['$http'];
 
-		function ProductService($http) {
+		function VehicleService($http) {
 
 			var service = {
 				new: newData,
@@ -17,28 +17,26 @@
 				remove: remove
 			};
 
-			var products = []; 
-
 			return service;
 
 			function newData(data) {
-				return products.push(data);
+				return $http.post('/api/vehicles',data);
 			};
 
 			function listOne(id) {
-				return
+				return $http.get('/api/vehicles',{params:id});
 			};
 
 			function listAll() {
-				return products;
+				return $http.get('/api/vehicles');
 			};
 
 			function edit(data) {
-				return
+				return $http.put('/api/vehicles/'+data._id,data,{params:data});
 			};
 
 			function remove(data) {
-				return
+				return $http.delete('/api/vehicles/'+data,{params:data});
 			};
 		}
 })();
